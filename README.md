@@ -1,19 +1,19 @@
-# 🍊 Orange Engine 对接库服务
+#Orange Engine 对接库服务
 
 **Orange Engine Integration Library Service**
 
 本项目包含：
 
-- ✅ Orange Engine 对接静态库（`.a` 文件）
-- ✅ 完整对接示例代码
-- ✅ 引擎内核模块下载器
-- ✅ 官方使用说明文档
+- Orange Engine 对接静态库（`.a` 文件）
+- 完整对接示例代码
+- 引擎内核模块下载器
+- 官方使用说明文档
 
-> 🎉 本项目完全免费开放
+>  本项目完全免费开放
 
 ---
 
-# 📢 项目声明
+# 项目声明
 
 ⚠ **本项目永久免费。**  
 如您通过任何渠道付费获取本项目内容，说明您已遭遇诈骗，与本项目无关。
@@ -40,9 +40,9 @@
 
 ---
 
-# 📖 使用说明
+#  使用说明
 
-## 👨‍💻 1️⃣ 开发者用户
+## 1️⃣ 开发者用户
 
 如需对接 Orange Engine（橘子引擎），请按照以下步骤操作：
 
@@ -64,7 +64,7 @@
 
 ---
 
-## 👤 2️⃣ 普通用户
+## 2️⃣ 普通用户
 
 如果您是普通用户（使用官方或第三方开发者开发的程序）：
 
@@ -81,12 +81,12 @@
 获取方式：
 
 - 打开 Telegram
-- 联系机器人 👉 **@Orangeqdbot**
+- 联系机器人 **@Orangeqdbot**
 - 自动获取专属用户 Key
 
 ---
 
-### 🔐 Key 规则说明
+### Key 规则说明
 
 - 一个 Telegram 账号对应一个专属用户 Key
 - 一个用户 Key 最多可绑定 **5 台设备**
@@ -102,17 +102,17 @@
 
 ---
 
-# 🌐 官方链接
+# 官方链接
 
-- 🌍 官网  
+- 官网  
   https://www.orangineX.com
 
-- 🐙 GitHub  
+- GitHub  
   https://github.com/xiyueal/Orange-Engine
 
 ---
 
-# 📬 联系方式
+#联系方式
 
 📧 Email：iamxiyueya@gmail.com  
 
@@ -120,7 +120,7 @@
 
 ---
 
-# 🧡 Orange Engine
+#Orange Engine
 
 稳定 · 安全 · 高效  
 为开发者与用户提供更优质的引擎服务体验
