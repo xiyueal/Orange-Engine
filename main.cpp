@@ -11,6 +11,24 @@
 
 using namespace std;
 
+struct maps_entry {
+    uint64_t    vm_start;
+    uint64_t    vm_end;
+    uint8_t     perm_read;
+    uint8_t     perm_write;
+    uint8_t     perm_exec;
+    uint8_t     perm_shared;
+    char        path[256];
+} __attribute__((packed));
+
+struct maps_header {
+    int32_t     pid;
+    int32_t     count;
+    uint32_t    entry_size;
+    uint64_t    total_size;
+} __attribute__((packed));
+
+
 class OrangeKernel {
   public:
     OrangeKernel(char *Key);   // 初始化对接
@@ -25,6 +43,8 @@ class OrangeKernel {
 
     uintptr_t Get_ModuleBase(char *name);
     uintptr_t Get_ModuleBaseBss(char *name);
+
+    struct maps_header *GetAllMaps(pid_t pid);//新增，获取某pid进程的完整maps信息
 
     template <typename T> T read(uintptr_t addr);    
 
@@ -131,6 +151,29 @@ int main(int argc, char *argv[]) {
 	3.参数使用和read_queue基本一致，差别在于可以直接返回数据
 	*/	
     
+    //这里测试遍历读取全部maps信息
+    struct maps_header *maps=OrangeKernelTool->GetAllMaps(getpid());
+    printf("PID: %d, Entries: %d, Total: %lu bytes\n",
+           maps->pid, maps->count, (unsigned long)maps->total_size);
+    printf("%-36s %-5s %-10s %-6s %-10s %s\n",
+           "Address Range", "Perms", "Offset", "Dev", "Inode", "Path");
+    printf("----------------------------------------------------------------------\n");
+    struct maps_entry *entries = (struct maps_entry *)((char *)maps + sizeof(struct maps_header));
+
+    for (int i = 0; i < maps->count; i++) {
+        struct maps_entry *e = &entries[i];
+        printf("%012lx-%012lx %c%c%c%c %s\n",
+               (unsigned long)e->vm_start,
+               (unsigned long)e->vm_end,
+               e->perm_read   ? 'r' : '-',
+               e->perm_write  ? 'w' : '-',
+               e->perm_exec   ? 'x' : '-',
+               e->perm_shared ? 's' : 'p',
+               e->path);
+    }               
+    free(maps);
+    //记得回收内存
+
     
     char TestMemory[10];   
     //这里是大区域一次性读取，自定义读取任意大小的内存，并写入区域。
